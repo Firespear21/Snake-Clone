@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.lwjgl.Sys;
 import snakeclone.entity.Entity;
+import snakeclone.EntityManagement;
 
 /**
  *
@@ -26,8 +27,8 @@ public class SnakeClone extends Canvas {
 	private BufferStrategy strategy;
 	private boolean gameIsRunning;
 	//Object for entities to reside in
-	
-	
+	EntityManagement entities = new EntityManagement().get();
+	entities.
 	
 	public SnakeClone() {
 		JFrame container = new JFrame("Snake by Neil");
@@ -46,6 +47,13 @@ public class SnakeClone extends Canvas {
 		
 		createBufferStrategy(2);
 		strategy = getBufferStrategy();
+		
+		container.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				System.exit(0);
+			}
+			
+			
 	}
 	
 	public void gameLoop() {

@@ -24,12 +24,6 @@ public class FoodEntity extends Entity{
 		super(ref, new Random().nextInt(600), new Random().nextInt(600));
 		this.game = game;
 	}
-	
-	//Food doesnt move? So do nothing in the food move method
-	@Override
-	public void move(long delta){
-		//nothing
-	}
 
 	@Override
 	public void collidedWith(Entity other) {
@@ -37,6 +31,18 @@ public class FoodEntity extends Entity{
 			//TODO: Destroy this entity and tell the main loop that food 
 			//has been eaten so it can spawn a new one
 		}
+	}
+	
+	//Food doesnt move? So do nothing in the food move method
+	@Override
+	public void move(long delta){
+		//nothing
+	}
+	@Override
+	public void turnLeft(){
+	}
+	@Override
+	public void turnRight(){
 	}
 	
 }

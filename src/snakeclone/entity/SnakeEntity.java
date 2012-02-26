@@ -5,6 +5,7 @@
 package snakeclone.entity;
 
 import java.util.ArrayList;
+import snakeclone.SnakeClone;
 
 /**
  *
@@ -12,10 +13,12 @@ import java.util.ArrayList;
  */
 public class SnakeEntity  extends Entity {
 	protected ArrayList snakeTail;
+	private SnakeClone game;
 	
-	public SnakeEntity(String ref) {
-		super(ref, 2 ,2);
+	public SnakeEntity(String ref, SnakeClone game) {
+		super(ref, 30 ,30);
 		snakeTail = new ArrayList();
+		this.game = game;
 	}
 	@Override
 	public void collidedWith(Entity other) {

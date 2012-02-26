@@ -22,7 +22,7 @@ public class Sprite {
 		return image.getWidth(null);
 	}
 	
-	public int getHieght() {
+	public int getHeight() {
 		return image.getHeight(null);
 	}
 	
