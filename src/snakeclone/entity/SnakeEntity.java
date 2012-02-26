@@ -4,14 +4,18 @@
  */
 package snakeclone.entity;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Manning
  */
 public class SnakeEntity  extends Entity {
-
+	protected ArrayList snakeTail;
+	
 	public SnakeEntity(String ref) {
 		super(ref, 2 ,2);
+		snakeTail = new ArrayList();
 	}
 	@Override
 	public void collidedWith(Entity other) {

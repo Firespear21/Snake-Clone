@@ -7,7 +7,8 @@ package snakeclone.entity;
 import snakeclone.SnakeClone;
 import java.util.Random;
 /**
- *
+ * This is the food entity it is eaten(destroyed) upon contact with the snake
+ * and spawns at a specific or random point
  * @author Manning
  */
 public class FoodEntity extends Entity{
@@ -25,6 +26,7 @@ public class FoodEntity extends Entity{
 	}
 	
 	//Food doesnt move? So do nothing in the food move method
+	@Override
 	public void move(long delta){
 		//nothing
 	}
@@ -32,7 +34,8 @@ public class FoodEntity extends Entity{
 	@Override
 	public void collidedWith(Entity other) {
 		if (other instanceof SnakeEntity){
-			
+			//TODO: Destroy this entity and tell the main loop that food 
+			//has been eaten so it can spawn a new one
 		}
 	}
 	

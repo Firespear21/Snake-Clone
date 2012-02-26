@@ -18,7 +18,7 @@ public abstract class Entity {
 	protected int speedX;
 	protected int speedY;
 	protected Sprite sprite;
-	protected SnakeTailEntity tail[];
+	private int speedOfSnake = 10;
 	private Rectangle me = new Rectangle();
 	private Rectangle him = new Rectangle();
 	
@@ -31,7 +31,7 @@ public abstract class Entity {
 	public void move(long delta) {
 		//Moves the entity
 		this.x += (delta * speedX)/1000;
-		this.x += (delta * speedX)/1000;
+		this.y += (delta * speedY)/1000;
 	}
 	
 	public void setHorizontalMovement(int x){
@@ -60,6 +60,37 @@ public abstract class Entity {
 	
 	public int getY() {
 		return (int) y;
+	}
+	
+	public void turnLeft() {
+		if(speedX > 0) {
+			speedX = 0;
+			speedY = -speedOfSnake;
+		} else if(speedX < 0){
+			speedX = 0;
+			speedY = speedOfSnake;
+		} else if(speedY > 0) {
+			speedY = 0;
+			speedX = -speedOfSnake;
+		} else if(speedY < 0) {
+			speedY = 0;
+			speedX = speedOfSnake;
+		}
+	}
+	public void turnRight() {
+		if(speedX > 0) {
+			speedX = 0;
+			speedY = speedOfSnake;
+		} else if(speedX < 0){
+			speedX = 0;
+			speedY = -speedOfSnake;
+		} else if(speedY > 0) {
+			speedY = 0;
+			speedX = speedOfSnake;
+		} else if(speedY < 0) {
+			speedY = 0;
+			speedX = -speedOfSnake;
+		}
 	}
 	
 	public boolean collidesWith(Entity other) {

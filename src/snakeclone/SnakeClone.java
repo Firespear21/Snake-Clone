@@ -15,15 +15,19 @@ import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import org.lwjgl.Sys;
+import snakeclone.entity.Entity;
 
 /**
  *
  * @author Manning
  */
 public class SnakeClone extends Canvas {
+	//Rendering variables
 	private BufferStrategy strategy;
 	private boolean gameIsRunning;
-	private long lastLoopTime = System.currentTimeMillis();
+	//Object for entities to reside in
+	
+	
 	
 	public SnakeClone() {
 		JFrame container = new JFrame("Snake by Neil");
@@ -45,6 +49,7 @@ public class SnakeClone extends Canvas {
 	}
 	
 	public void gameLoop() {
+		long lastLoopTime = System.currentTimeMillis();
 		//gameloop
 		while(gameIsRunning) {
 			//work out how long its been since the last update
@@ -57,7 +62,9 @@ public class SnakeClone extends Canvas {
 			//destroy object and flip buffer
 			graphics.dispose();
 			strategy.show();
-			try { Thread.sleep(10); } catch (Exception e) {}
+			//allows each framebuffer and logic loop to occur no more than
+			//100 times a second
+			try { Thread.sleep(lastLoopTime + 10 - System.currentTimeMillis()); } catch (Exception e) {}
 			
 		}
 	}
