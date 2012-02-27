@@ -14,13 +14,15 @@ import snakeclone.SnakeClone;
 public class SnakeEntity  extends Entity {
 	protected ArrayList snakeTail;
 	private SnakeClone game;
+	private int speedOfSnake = -100;
 	
-	public SnakeEntity(String ref, SnakeClone game) {
-		super(ref, 30 ,30);
+	public SnakeEntity(SnakeClone game, String ref, int x, int y) {
+		super(ref, x ,y);
 		snakeTail = new ArrayList();
 		this.game = game;
+		this.setHorizontalMovement(0);
+		this.setVerticleMovement(speedOfSnake);
 	}
-	@Override
 	public void collidedWith(Entity other) {
 		throw new UnsupportedOperationException("Not supported yet.");
 	}

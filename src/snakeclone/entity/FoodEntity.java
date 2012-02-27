@@ -34,14 +34,11 @@ public class FoodEntity extends Entity{
 	}
 	
 	//Food doesnt move? So do nothing in the food move method
-	@Override
 	public void move(long delta){
 		//nothing
 	}
-	@Override
 	public void turnLeft(){
 	}
-	@Override
 	public void turnRight(){
 	}
 	

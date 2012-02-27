@@ -4,25 +4,53 @@
  */
 package snakeclone;
 
+import java.awt.KeyEventDispatcher;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 /**
  * Handles keyboard events
  * @author Manning
  */
-public class KeyBoardHandler extends KeyAdapter{
+public class KeyBoardHandler extends KeyAdapter {
 	//variables for relaying info to game loop
-	private boolean leftPressed = false;
-	private boolean rightPressed = false;
+	private boolean leftPressed;
+	private boolean rightPressed;
+	private static KeyBoardHandler keyHandler = new KeyBoardHandler();
 	
-	public void KeyTyped(KeyEvent e) {
+	public KeyBoardHandler() {
+		super();
+	}
+	public KeyBoardHandler get() {
+		return keyHandler;
+	}
+
+	public boolean isLeftPressed() {
+		return leftPressed;
+	}
+
+	public void setLeftPressed(boolean leftPressed) {
+		this.leftPressed = leftPressed;
+	}
+
+	public boolean isRightPressed() {
+		return rightPressed;
+	}
+
+	public void setRightPressed(boolean rightPressed) {
+		this.rightPressed = rightPressed;
+	}
+	
+	@Override
+	public void keyPressed(KeyEvent e) {
+		System.out.println("key pressed");
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-				leftPressed = true;
-			}
-			if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-				rightPressed = true;
-			}
+			leftPressed = true;
+			System.out.println("LEFT KEY PRESSED");
+		}
+		
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			rightPressed = true;
+		}
+		
 	}
 }

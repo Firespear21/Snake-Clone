@@ -13,12 +13,12 @@ import snakeclone.SpriteStore;
  * @author Manning
  */
 public abstract class Entity {
-	protected double x;
-	protected double y;
-	protected int speedX;
-	protected int speedY;
+	protected long x;
+	protected long y;
+	protected long speedX;
+	protected long speedY;
 	protected Sprite sprite;
-	private int speedOfSnake = 10;
+	private int speedOfSnake = -100;
 	private Rectangle me = new Rectangle();
 	private Rectangle him = new Rectangle();
 	
@@ -42,11 +42,11 @@ public abstract class Entity {
 		this.speedY = y;
 	}
 	
-	public int getHorizontalMovement() {
+	public long getHorizontalMovement() {
 		return speedX;
 	}
 	
-	public int getVerticleMovement() {
+	public long getVerticleMovement() {
 		return speedY;
 	}
 	
@@ -64,26 +64,30 @@ public abstract class Entity {
 	
 	public void turnLeft() {
 		if(speedX > 0) {
-			speedX = 0;
-			speedY = -speedOfSnake;
+			this.speedX = 0;
+			this.speedY = speedOfSnake;
+			System.out.println("a:"+speedX+","+speedY);
 		} else if(speedX < 0){
-			speedX = 0;
-			speedY = speedOfSnake;
+			this.speedX = 0;
+			this.speedY = -speedOfSnake;
+			System.out.println("b:"+speedX+","+speedY);
 		} else if(speedY > 0) {
-			speedY = 0;
-			speedX = -speedOfSnake;
+			this.speedY = 0;
+			this.speedX = -speedOfSnake;
+			System.out.println("c:"+speedX+","+speedY);
 		} else if(speedY < 0) {
-			speedY = 0;
-			speedX = speedOfSnake;
+			this.speedY = 0;
+			this.speedX = speedOfSnake;
+			System.out.println("d:"+speedX+","+speedY);
 		}
 	}
 	public void turnRight() {
 		if(speedX > 0) {
 			speedX = 0;
-			speedY = speedOfSnake;
+			speedY = -speedOfSnake;
 		} else if(speedX < 0){
 			speedX = 0;
-			speedY = -speedOfSnake;
+			speedY = speedOfSnake;
 		} else if(speedY > 0) {
 			speedY = 0;
 			speedX = speedOfSnake;
@@ -94,8 +98,8 @@ public abstract class Entity {
 	}
 	
 	public boolean collidesWith(Entity other) {
-		me.setBounds((int) x, (int) y, sprite.getWidth(), sprite.getHieght());
-		him.setBounds((int) other.x, (int) other.y, other.sprite.getWidth(), other.sprite.getHieght());
+		me.setBounds((int) x, (int) y, sprite.getWidth(), sprite.getHeight());
+		him.setBounds((int) other.x, (int) other.y, other.sprite.getWidth(), other.sprite.getHeight());
 		return me.intersects(him);
 	}
 	

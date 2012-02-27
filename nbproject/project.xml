@@ -6,9 +6,6 @@
             <name>SnakeClone</name>
             <source-roots>
                 <root id="src.Res.dir"/>
-                <root id="src..git.dir"/>
-                <root id="src.build.dir"/>
-                <root id="src.nbproject.dir"/>
                 <root id="src.dir"/>
             </source-roots>
             <test-roots>

@@ -43,4 +43,12 @@ public class EntityManagement {
 		aliveEntities.removeAll(deadEntities);
 		deadEntities.clear();
 	}
+	
+	public int getEntitySize(){
+		return aliveEntities.size();
+	}
+	
+	public Entity getEntity(int i) {
+		return (Entity) aliveEntities.get(i);
+	}
 }

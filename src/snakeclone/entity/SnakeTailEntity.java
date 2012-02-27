@@ -14,7 +14,6 @@ public class SnakeTailEntity extends Entity {
 		super(ref, 2 ,2);
 	}
 	
-	@Override
 	public void collidedWith(Entity other) {
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
