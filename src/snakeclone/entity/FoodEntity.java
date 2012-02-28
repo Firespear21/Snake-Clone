@@ -6,6 +6,7 @@ package snakeclone.entity;
 
 import snakeclone.SnakeClone;
 import java.util.Random;
+import snakeclone.EntityManagement;
 /**
  * This is the food entity it is eaten(destroyed) upon contact with the snake
  * and spawns at a specific or random point
@@ -13,6 +14,7 @@ import java.util.Random;
  */
 public class FoodEntity extends Entity{
 	private SnakeClone game;
+	private EntityManagement entities = new EntityManagement().get();
 	//put food in a specific spot
 	public FoodEntity(SnakeClone game, String ref, int x, int y) {
 		super(ref, x ,y);
@@ -21,15 +23,15 @@ public class FoodEntity extends Entity{
 	
 	//Randomly generate a food piece on the map
 	public FoodEntity(SnakeClone game, String ref){
-		super(ref, new Random().nextInt(600), new Random().nextInt(600));
+		super(ref, new Random().nextInt(40) * 20, new Random().nextInt(30) * 20);
 		this.game = game;
 	}
 
 	@Override
 	public void collidedWith(Entity other) {
 		if (other instanceof SnakeEntity){
-			//TODO: Destroy this entity and tell the main loop that food 
-			//has been eaten so it can spawn a new one
+			entities.addDeadEntity(this);
+			game.foodLeft--;
 		}
 	}
 	

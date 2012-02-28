@@ -6,6 +6,7 @@ package snakeclone;
 
 import java.util.ArrayList;
 import snakeclone.entity.Entity;
+import snakeclone.entity.SnakeEntity;
 
 /**
  * This class better organizes the Entities to prevent clutter in the main

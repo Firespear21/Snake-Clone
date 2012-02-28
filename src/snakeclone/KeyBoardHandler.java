@@ -42,10 +42,8 @@ public class KeyBoardHandler extends KeyAdapter {
 	
 	@Override
 	public void keyPressed(KeyEvent e) {
-		System.out.println("key pressed");
 		if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			leftPressed = true;
-			System.out.println("LEFT KEY PRESSED");
 		}
 		
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {

@@ -6,6 +6,7 @@ package snakeclone.entity;
 
 import java.awt.Graphics;
 import java.awt.Rectangle;
+import snakeclone.EntityManagement;
 import snakeclone.Sprite;
 import snakeclone.SpriteStore;
 /**
@@ -18,7 +19,8 @@ public abstract class Entity {
 	protected long speedX;
 	protected long speedY;
 	protected Sprite sprite;
-	private int speedOfSnake = -100;
+	protected EntityManagement entities = new EntityManagement().get();
+	protected int speedOfSnake = -200;
 	private Rectangle me = new Rectangle();
 	private Rectangle him = new Rectangle();
 	
@@ -66,19 +68,15 @@ public abstract class Entity {
 		if(speedX > 0) {
 			this.speedX = 0;
 			this.speedY = speedOfSnake;
-			System.out.println("a:"+speedX+","+speedY);
 		} else if(speedX < 0){
 			this.speedX = 0;
 			this.speedY = -speedOfSnake;
-			System.out.println("b:"+speedX+","+speedY);
 		} else if(speedY > 0) {
 			this.speedY = 0;
 			this.speedX = -speedOfSnake;
-			System.out.println("c:"+speedX+","+speedY);
 		} else if(speedY < 0) {
 			this.speedY = 0;
 			this.speedX = speedOfSnake;
-			System.out.println("d:"+speedX+","+speedY);
 		}
 	}
 	public void turnRight() {
@@ -95,6 +93,15 @@ public abstract class Entity {
 			speedY = 0;
 			speedX = -speedOfSnake;
 		}
+	}
+	
+		
+	public boolean checkPostion() {
+		if (x < 0 || x > 800 || y < 0 || y > 600){
+			entities.addDeadEntity(this);
+			return true;
+		}
+		return false;
 	}
 	
 	public boolean collidesWith(Entity other) {
